@@ -2,17 +2,17 @@
   border:0px solid rgba(168, 168, 168, 0.185);;
   border-radius :20px;
   width:400px;
-  margin:20px auto;
+  margin:auto;
   padding:20px;
   text-align:center;
-  background :  rgba(0, 0, 0, 0.03);
+  /* background :  rgba(0, 0, 0, 0.03); */
 }
 
 #timer{ 
   color: #dc3545; 
   font-size:50px; 
   margin:10px auto;
-  border : 5px solid #dc3545;
+  border : 10px solid #dc3545;
   border-radius:50%;
   width:200px;
   height:200px;
@@ -26,7 +26,7 @@
 }
 
 #time{
-  margin-top:70px;
+  margin-top:57px;
   z-index : 1;
   position:relative;
 }
@@ -44,12 +44,13 @@
   border:none; 
   color:#fff; 
   cursor:pointer; 
-  padding:5px; 
+  padding:5px;
   width:90px; 
-  margin:10px auto;
+  margin-left:10px;
   font-size:14px;
   height : 50px;
-  border-radius : 50px;
+  margin-top: 10px;
+  border-radius : 4px;
 }
 
 #buttons button#shortBreak{
