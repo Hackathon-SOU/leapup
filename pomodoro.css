@@ -1,18 +1,18 @@
 #container{
-  border:1px solid #333;
+  border:0px solid rgba(168, 168, 168, 0.185);;
   border-radius :20px;
   width:400px;
   margin:20px auto;
   padding:20px;
   text-align:center;
-  background : #333;
+  background :  rgba(0, 0, 0, 0.03);
 }
 
 #timer{ 
-  color:#f00; 
+  color: #dc3545; 
   font-size:50px; 
   margin:10px auto;
-  border : 5px solid red;
+  border : 5px solid #dc3545;
   border-radius:50%;
   width:200px;
   height:200px;
@@ -32,7 +32,7 @@
 }
 
 #filler{
-  background : #ddffcc;
+  background : #36d7f374;
   height: 0px;
   width: 200px;
   position:absolute;
@@ -40,7 +40,7 @@
 }
 
 #buttons button { 
-  background:#4da6ff; 
+  background:#0d6efd;; 
   border:none; 
   color:#fff; 
   cursor:pointer; 
@@ -53,13 +53,13 @@
 }
 
 #buttons button#shortBreak{
-  background : #0c0;
+  background : #ffc107;
 }
 
 #buttons button#longBreak{
-  background : #080;
+  background : #198754;
 }
 
 #buttons button#stop{
-  background : #f00;
+  background : #dc3545;
 }
