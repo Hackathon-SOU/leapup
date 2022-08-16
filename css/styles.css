@@ -4589,7 +4589,9 @@ textarea.form-control-lg {
 }
 
 .card-header {
+  position: relative;
   padding: 0.5rem 1rem;
+  height:40px;
   margin-bottom: 0;
   background-color:#fffaea;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
@@ -4600,8 +4602,7 @@ textarea.form-control-lg {
 
 .card-footer {
   padding: 0.5rem 1rem;
-  background-color: #fffaea
-  ;
+  background-color: #fffaea;
   border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
 .card-footer:last-child {
