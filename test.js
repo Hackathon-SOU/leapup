@@ -20,7 +20,12 @@ var firebaseConfig = {
         window.location.replace("../index.html");
       }
     })
-    
+ 
+    function signOut(){
+      auth.signOut();
+      alert("SignOut Successfully from System");
+    }
+
     var form = document.getElementById('todoForm')
     form.addEventListener('submit', submitForm);
     
