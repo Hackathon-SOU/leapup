@@ -87,9 +87,18 @@ function getTask()
               totaltask[doc.id-1].id = doc.id;
               console.log(doc.data());
               console.log(totaltask[doc.id-1].id)
-              // printTaskList(doc.data())
+              if(parseInt(doc.id)==querySnapshot.size){
+                console.info("true");
+                taskid = doc.id.split('');
+                taskid[taskid.length-1]++;
+                taskid = taskid.join('');
+                console.log(taskid);
+                // taskid = doc.id+1;
+              }
+              // printTaskList(doc.d1ata())
           })
-          taskid = querySnapshot.size+1;
+          // taskid = querySnapshot.size;
+          // taskid = taskid.split('');
           printTask()
       });
 }
@@ -148,8 +157,17 @@ var content = document.querySelector('.todo-content');
   </ul>`
 }).join('')
 
-// console.log(taskHtml);
-content.innerHTML="a";
-content.innerHTML=taskHtml;
-// console.log(content);
+content.innerHTML="";
+content.innerHTML=taskHtml
+
+console.log(taskHtml);
+// content.innerHTML==null:content.innerHTML=taskHtml?content.innerHTML="";
+// if (content.innerHTML==null) {
+//   console.log("if");
+// } else {
+//   content.innerHTML="";
+//   console.log("else");
+//   printTask();
+// }
+console.log(content);
 };
