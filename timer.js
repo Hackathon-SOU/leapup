@@ -28,11 +28,12 @@ stopBtn.onclick = function(e) {
     e.preventDefault();
     stopTimer();
 }
- 
+
+
 // START TIMER
 startBtn.onclick = function(e) {
     e.preventDefault();
- 
+    showTimer();
     // GET THE UI TIMER VALUE AND IF VALID
     // SET THE REFERENCE TIME AND START THE INTERVAL TIMER
     COUNTDOWN = parseInt(minValue.value)*60;
@@ -40,15 +41,37 @@ startBtn.onclick = function(e) {
     if (COUNTDOWN > 0) {
         startTime = Math.ceil(Date.now() / 1000);
         timerFn   = setInterval(updateTimer, 1000);
+        playAudio();
     }
 }
- 
-var x;
+
+
+function pauseAudio(){
+    var audio = document.getElementById("bineuralBeat");
+    audio.pause();
+};
+
+function playAudio(){
+     var audio = document.getElementById("bineuralBeat");
+    if (confirm("Please make sure you've pluged in your Headset!") == true) {
+        // playing audio
+        audio.play();
+    } else {
+        if (confirm("Continue without headset?") == true) {
+            // playing audio
+            var audio = new Audio("bineuralBeat/simply-meditation-series-11hz-alpha-binaural-waves-for-relaxed-focus-8028.mp3");
+            audio.play();
+          } else {
+          }
+      }
+ };
 
 function stopTimer() {
     clearInterval(timerFn);
     setThreshold();
     timerFn = null;
+    pauseAudio();
+    showButton();
     return 0;
 }
 
@@ -97,4 +120,18 @@ function getTimeValues(referenceTime) {
   const secs = referenceTime - hours * 3600 - mins * 60;
  
   return {hours, mins, secs};
+}
+
+var timerDisplay = document.getElementById("temp-1")
+var buttonDisplay = document.getElementById("temp-2")
+
+function showButton(){
+    timerDisplay.style.display = 'none';
+    buttonDisplay.style.display = 'block';
+}
+
+function showTimer(){
+    timerDisplay.style.display = 'block';
+    buttonDisplay.style.display = 'none';
+
 }

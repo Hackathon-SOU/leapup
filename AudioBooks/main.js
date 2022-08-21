@@ -19,3 +19,76 @@ var firebaseConfig = {
           window.location.replace("../index.html");
         }
       })
+
+         
+      let slideIndex = 1;
+      var content = "";
+      var chatbox = document.getElementById("chatbox");
+      
+      
+      showSlides(slideIndex);
+      
+      function plusSlides(n) {
+          showSlides(slideIndex += n);
+      }
+      
+      function currentSlide(n) {
+          showSlides(slideIndex = n);
+      }
+      
+      function showSlides(n) {
+          // for displaying button
+          if (n>=4) {
+            chatbox.style.display = 'block';   
+
+              // Create new link Element
+              var link = document.createElement('link');       
+              // set the attributes for link element
+              link.rel = 'stylesheet';
+           
+              link.type = 'text/css';
+           
+              link.href = './static/css/style.css';
+       
+              // Get HTML head element to append
+              // link element to it
+              document.getElementsByTagName('HEAD')[0].appendChild(link);
+              // include('./static/js/script.js');
+
+            }
+
+          content = document.getElementById([n]).textContent;
+          console.log(content);
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+          if (n > slides.length) {slideIndex = 1}    
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";  
+              slides[i].style.display = "none";  
+          }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace("active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += "active";
+}
+
+
+var msg ="";
+var element="";
+
+function speak(){
+  var msg = new SpeechSynthesisUtterance();
+  msg.text = content;
+  window.speechSynthesis.speak(msg);
+};
+
+function stop() {
+  window.speechSynthesis.cancel();
+};
+
+function navigate(){
+  window.location.replace("../home.html")
+}

@@ -1,7 +1,7 @@
 .countdown {
     margin: 0 auto;
-    border: 5px solid #0b5ed7;
-    border-radius: 50%;
+    border: 5px solid #3f6080;
+    border-radius: 11px;
     padding: .5rem;
     margin-top: 1rem;
     position: relative;
@@ -16,7 +16,7 @@
   
   .countdown span {
       font-size: 40px;
-      color: #0b5ed7;
+      color: #3f6080;
       font-family: Arial;
   }
   .countdown.threshold span {
