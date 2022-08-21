@@ -28,6 +28,7 @@ var firebaseConfig = {
 
     var form = document.getElementById('todoForm')
     form.addEventListener('submit', submitForm);
+    var content = document.querySelector('.todo-content');
     
     function submitForm(e) {
       e.preventDefault();
@@ -38,13 +39,6 @@ var firebaseConfig = {
     var taskid
 
     var db = firebase.firestore();
-    // var taskid = function(){
-    //   db.collection("todolist")
-    //   .get()
-    //   .then((querySnapshot) =>
-    //   { 
-    //     return querySnapshot.size;
-    //   })};
     
      getTask();  
 
@@ -59,15 +53,16 @@ var firebaseConfig = {
     }
 
 
-function storeData() {
+function storeData(e) {
   var task = document.getElementById("task").value;
   var date = document.getElementById("date").value;
   console.log(new Date(date));
   
     console.log(taskid);
-    db.collection("todolist").doc(taskid.toString()).set({
+    db.collection("todolist").doc().set({
         task: task,
-        date: new Date(date)
+        date: new Date(date),
+        key: taskid,
     })
     .then(function() {
         console.log("Doc successful") ;
@@ -76,6 +71,7 @@ function storeData() {
     .catch(function(error) {
        console.error("Error writing doc", error);
     });
+    getTask(taskid);
 };
 
 var totaltask=[];
@@ -83,22 +79,18 @@ function getTask()
 {
       db.collection("todolist").get().then((querySnapshot) => {
               querySnapshot.forEach((doc) => {
-              totaltask.push(doc.data());
-              totaltask[doc.id-1].id = doc.id;
-              console.log(doc.data());
-              console.log(totaltask[doc.id-1].id)
-              if(parseInt(doc.id)==querySnapshot.size){
-                console.info("true");
-                taskid = doc.id.split('');
-                taskid[taskid.length-1]++;
-                taskid = taskid.join('');
-                console.log(taskid);
-                // taskid = doc.id+1;
+                if(totaltask[doc.data().key-1]==undefined || totaltask.length==0) {
+                  totaltask.push(doc.data());
+                  console.log(totaltask[doc.data().key-1],  totaltask.length);
               }
-              // printTaskList(doc.d1ata())
+              console.log(totaltask[doc.data().key-1], totaltask.length);
+              console.log(totaltask[doc.data().key-1].key)
+              if(doc.data().key==querySnapshot.size){
+                console.info("true");
+                taskid = doc.data().key + 1;
+                console.log(taskid);
+              }
           })
-          // taskid = querySnapshot.size;
-          // taskid = taskid.split('');
           printTask()
       });
 }
@@ -107,16 +99,8 @@ function getTask()
 
 function printTask(){
 
-      
-  // newdate = year + "/" + month + "/" + day;
-var content = document.querySelector('.todo-content');
-
-
-  // console.log(totaltask);
-
   var taskHtml=totaltask.map((item,i)=>{
-  // console.log("hello");
-  console.log(item.id);
+  // console.log(item.id);
   var seconds = item.date.seconds * 1000;
   var dateObj = new Date(seconds);
   console.log(item.date.seconds)
@@ -127,7 +111,6 @@ var content = document.querySelector('.todo-content');
   var min = dateObj.getMinutes();
 
   var dateString =`${day}/${month}/${year} - ${hour}:${min}}`;
-
   return `<ul data-id="${i}" class="list-group list-group-horizontal rounded-0 bg-transparent">
     <li
       class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
@@ -155,19 +138,10 @@ var content = document.querySelector('.todo-content');
       </div>
     </li>
   </ul>`
-}).join('')
+}).join('');
 
-content.innerHTML="";
 content.innerHTML=taskHtml
 
-console.log(taskHtml);
-// content.innerHTML==null:content.innerHTML=taskHtml?content.innerHTML="";
-// if (content.innerHTML==null) {
-//   console.log("if");
-// } else {
-//   content.innerHTML="";
-//   console.log("else");
-//   printTask();
-// }
-console.log(content);
+// console.log(taskHtml);
+// console.log(content);
 };
