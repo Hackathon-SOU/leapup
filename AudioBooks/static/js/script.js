@@ -9,11 +9,11 @@ function include(file) {
   document.getElementsByTagName('head').item(0).appendChild(script);
 }
 
-var final = document.getElementById("final");
+// var final = document.getElementById("final");
 
-navigate(){
+function navigate() {
   chatbox.style.display = 'block';  
-}
+};
 
 // Bot pop-up intro
 document.addEventListener("DOMContentLoaded", () => {

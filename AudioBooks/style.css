@@ -27,6 +27,11 @@ body
         font-size: 25px;
     }
     
+    h4{
+        font-family: 'Satisfy', cursive;
+        font-size: 25px;
+    }
+    
     /* Next & previous buttons */
 .prev, .next {
     cursor: pointer;
