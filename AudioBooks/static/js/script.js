@@ -16,7 +16,7 @@ function navigate() {
 };
 
 // Bot pop-up intro
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", ( ) => {
   const elemsTap = document.querySelector(".tap-target");
   // eslint-disable-next-line no-undef
   const instancesTap = M.TapTarget.init(elemsTap, {});
