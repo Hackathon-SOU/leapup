@@ -1,212 +1,193 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
-<link rel="stylesheet" href="./style.css">
-<link
-href="https://fonts.googleapis.com/icon?family=Material+Icons"
-rel="stylesheet"
-/>
-<link rel="preconnect" href="https://fonts.gstatic.com" />
-<link
-href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
-rel="stylesheet"
-/>
-<link
-href="https://fonts.googleapis.com/css?family=Raleway:500&display=swap"
-rel="stylesheet"
-/>
 
-<link rel="preconnect" href="https://fonts.gstatic.com" />
-<link
-href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
-rel="stylesheet"
-/>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+  <link rel="stylesheet" href="./style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway:500&display=swap" rel="stylesheet" />
 
-<link rel="preconnect" href="https://fonts.gstatic.com" />
-<link
-href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
-rel="stylesheet"
-/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
 
-<!--Import Font Awesome Icon Font-->
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
-crossorigin="anonymous"
-/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
 
-<!--Import materialize.css-->
-<link
-rel="stylesheet"
-type="text/css"
-href="static/css/materialize.min.css"
-/>
-<!-- <link rel="stylesheet" type="text/css" href="static/css/style.css" /> -->
-<!-- <h4>Feel the inner peace!</h4> -->
+  <!--Import Font Awesome Icon Font-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+
+  <!--Import materialize.css-->
+  <link rel="stylesheet" type="text/css" href="static/css/materialize.min.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="static/css/style.css" /> -->
+  <!-- <h4>Feel the inner peace!</h4> -->
 </head>
+
 <body>
-    <div class="slideshow-container">
-        <div class="mySlides fade">
-            <div class="numbertext"><button class="listen" id="x" onclick="speak()">
-                <i class='fas fa-play-circle' style='font-size:20px;color:#3f6080'></i>
-            </button>
-            <button onclick="stop()">
-                <i class='fa-solid fa-circle-stop' style='font-size:20px;color:#3f6080'></i>
-            </button>
-        </div><span class="quote-content" id="1">“When a man dwells on the pleasure of sense, the attraction for them arises in him, From attraction arises desire, the lust of possession, and this leads to passion, to anger.”</span>
-        <div class="text"> – Bhagavad Gita</div>
-    </div>
-    
+  <div class="slideshow-container">
     <div class="mySlides fade">
-        <div class="numbertext">
-            <button class="listen" id="x" onclick="speak()">
-                <i class='fas fa-play-circle' style='font-size:20px;color:#3f6080'></i>
-            </button>
-            <button onclick="stop()">
-                <i class='fa-solid fa-circle-stop' style='font-size:20px;color:#3f6080'></i>
-            </button>
-        </div>
-        <div class="numbertext"></div><span class="quote-content" id="2">That person is like a tree planted by streams of water, which yields its fruit in season and whose leaf does not wither— whatever they do prospers."</span>
-        <div class="text"> – Bible</div>
+      <div class="numbertext"><button class="listen" id="x" onclick="speak()">
+          <i class='fas fa-play-circle' style='font-size:20px;color:#3f6080'></i>
+        </button>
+        <button onclick="stop()">
+          <i class='fa-solid fa-circle-stop' style='font-size:20px;color:#3f6080'></i>
+        </button>
+      </div><span class="quote-content" id="1">“When a man dwells on the pleasure of sense, the attraction for them
+        arises in him, From attraction arises desire, the lust of possession, and this leads to passion, to
+        anger.”</span>
+      <div class="text"> – Bhagavad Gita</div>
     </div>
-    
+
     <div class="mySlides fade">
-        <div class="numbertext">
-            <button class="listen" id="x" onclick="speak()">
-                <i class='fas fa-play-circle' style='font-size:20px;color:#3f6080'></i>
-            </button>
-            <button onclick="stop()">
-                <i class='fa-solid fa-circle-stop' style='font-size:20px;color:#3f6080'></i>
-            </button>
-        </div>
-        <div class="numbertext"></div><span class="quote-content" id="3">"Do the people think that they will be left to say, “We believe,” without being put to the test?”</span>
-        <div class="text"> – Quran</div>
+      <div class="numbertext">
+        <button class="listen" id="x" onclick="speak()">
+          <i class='fas fa-play-circle' style='font-size:20px;color:#3f6080'></i>
+        </button>
+        <button onclick="stop()">
+          <i class='fa-solid fa-circle-stop' style='font-size:20px;color:#3f6080'></i>
+        </button>
+      </div>
+      <div class="numbertext"></div><span class="quote-content" id="2">That person is like a tree planted by streams of
+        water, which yields its fruit in season and whose leaf does not wither— whatever they do prospers."</span>
+      <div class="text"> – Bible</div>
     </div>
-        
-        <div class="mySlides fade">
-            <div class="numbertext"><button class="listen" id="x" onclick="speak()">
-                <i class='fas fa-play-circle' style='font-size:20px;color:#3f6080'></i>
-            </button>
-            <button onclick="stop()">
-                <i class='fa-solid fa-circle-stop' style='font-size:20px;color:#3f6080'></i>
-            </button>
-        </div><span class="quote-content" id="4">“When a man dwells on the pleasure of sense, the attraction for them arises in him, From attraction arises desire, the lust of possession, and this leads to passion, to anger.”</span>
-        <div class="text"> – Bhagavad Gita</div>
-    </div>
-    
+
     <div class="mySlides fade">
-        <div class="numbertext">
-            <button class="listen" id="x" onclick="speak()">
-                <i class='fas fa-play-circle' style='font-size:20px;color:#3f6080'></i>
-            </button>
-            <button onclick="stop()">
-                <i class='fa-solid fa-circle-stop' style='font-size:20px;color:#3f6080'></i>
-            </button>
-        </div>
-        <div class="numbertext"></div><span class="quote-content" id="5">That person is like a tree planted by streams of water, which yields its fruit in season and whose leaf does not wither— whatever they do prospers."</span>
-        <div class="text"> – Bible</div>
+      <div class="numbertext">
+        <button class="listen" id="x" onclick="speak()">
+          <i class='fas fa-play-circle' style='font-size:20px;color:#3f6080'></i>
+        </button>
+        <button onclick="stop()">
+          <i class='fa-solid fa-circle-stop' style='font-size:20px;color:#3f6080'></i>
+        </button>
+      </div>
+      <div class="numbertext"></div><span class="quote-content" id="3">"Do the people think that they will be left to
+        say, “We believe,” without being put to the test?”</span>
+      <div class="text"> – Quran</div>
     </div>
-    
+
     <div class="mySlides fade">
-        <div class="numbertext">
-            <button class="listen" id="x" onclick="speak()">
-                <i class='fas fa-play-circle' style='font-size:20px;color:#3f6080'></i>
-            </button>
-            <button onclick="stop()">
-                <i class='fa-solid fa-circle-stop' style='font-size:20px;color:#3f6080'></i>
-            </button>
-        </div>
-        <div class="numbertext"></div><span class="quote-content" id="6">"Do the people think that they will be left to say, “We believe,” without being put to the test?”</span>
-        <div class="text"> – Quran</div>
+      <div class="numbertext"><button class="listen" id="x" onclick="speak()">
+          <i class='fas fa-play-circle' style='font-size:20px;color:#3f6080'></i>
+        </button>
+        <button onclick="stop()">
+          <i class='fa-solid fa-circle-stop' style='font-size:20px;color:#3f6080'></i>
+        </button>
+      </div><span class="quote-content" id="4">“When a man dwells on the pleasure of sense, the attraction for them
+        arises in him, From attraction arises desire, the lust of possession, and this leads to passion, to
+        anger.”</span>
+      <div class="text"> – Bhagavad Gita</div>
     </div>
-    
+
+    <div class="mySlides fade">
+      <div class="numbertext">
+        <button class="listen" id="x" onclick="speak()">
+          <i class='fas fa-play-circle' style='font-size:20px;color:#3f6080'></i>
+        </button>
+        <button onclick="stop()">
+          <i class='fa-solid fa-circle-stop' style='font-size:20px;color:#3f6080'></i>
+        </button>
+      </div>
+      <div class="numbertext"></div><span class="quote-content" id="5">That person is like a tree planted by streams of
+        water, which yields its fruit in season and whose leaf does not wither— whatever they do prospers."</span>
+      <div class="text"> – Bible</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">
+        <button class="listen" id="x" onclick="speak()">
+          <i class='fas fa-play-circle' style='font-size:20px;color:#3f6080'></i>
+        </button>
+        <button onclick="stop()">
+          <i class='fa-solid fa-circle-stop' style='font-size:20px;color:#3f6080'></i>
+        </button>
+      </div>
+      <div class="numbertext"></div><span class="quote-content" id="6">"Do the people think that they will be left to
+        say, “We believe,” without being put to the test?”</span>
+      <div class="text"> – Quran</div>
+    </div>
+
     <!-- <a class="prev" onclick="plusSlides(-1)">❮</a>
         <a class="next" onclick="plusSlides(1)">❯</a> -->
-        
+
+  </div>
+
+  <br>
+  <button class="prev-btn" onclick="plusSlides(-1)">Previous</button>
+  <button class="finish-btn" id="finish" onclick="navigate()">Finish</button>
+  <button class="next-btn" onclick="plusSlides(1)">Next</button>
+
+  <!-- CHATBOT widget -->
+  <div class="container" id="chatbox" style="display: none;">
+    <!-- Modal for rendering the charts, declare this if you want to render charts, 
+           else you remove the modal -->
+    <div id="modal1" class="modal">
+      <canvas id="modal-chart"></canvas>
     </div>
 
-    <br>
-    <button class="prev-btn" onclick="plusSlides(-1)">Previous</button>
-    <button class="finish-btn" id="finish" onclick="navigate()">Finish</button>
-    <button class="next-btn" onclick="plusSlides(1)">Next</button>
-    
-    <!-- CHATBOT widget -->
-    <div class="container" id="chatbox" style="display: none;">
-        <!-- Modal for rendering the charts, declare this if you want to render charts, 
-           else you remove the modal -->
-        <div id="modal1" class="modal">
-          <canvas id="modal-chart"></canvas>
-        </div>
-  
-        <!--chatbot widget -->
-        <div class="widget">
-          <div class="chat_header">
-            <!--Add the name of the bot here -->
-            <span class="chat_header_title">LeapU</span>
-            <span class="dropdown-trigger" href="#" data-target="dropdown1">
-              <i class="material-icons"> more_vert </i>
-            </span>
-  
-            <!-- Dropdown menu-->
-            <ul id="dropdown1" class="dropdown-content">
-              <li><a href="#" id="clear">Clear</a></li>
-              <li><a href="#" id="restart">Restart</a></li>
-              <li><a href="#" id="close">Close</a></li>
-            </ul>
-          </div>
-  
-          <!--Chatbot contents goes here -->
-          <div class="chats" id="chats">
-            <div class="clearfix"></div>
-          </div>
-  
-          <!--keypad for user to type the message -->
-          <div class="keypad">
-            <textarea
-              id="userInput"
-              placeholder="Type a message..."
-              class="usrInput"
-            ></textarea>
-            <div id="sendButton">
-              <i class="fa fa-paper-plane" aria-hidden="true"></i>
-            </div>
-          </div>
-        </div>
-  
-        <!--bot profile-->
-        <div class="profile_div" id="profile_div">
-          <img class="imgProfile" src="static/img/botAvatar.png" />
-        </div>
-  
-        <!-- Bot pop-up intro -->
-        <div class="tap-target" data-target="profile_div">
-          <div class="tap-target-content">
-            <h5 class="white-text">Hey there 👋</h5>
-            <p class="white-text">
-              I can help you get started with Rasa and answer your technical
-              questions.
-            </p>
-          </div>
+    <!--chatbot widget -->
+    <div class="widget">
+      <div class="chat_header">
+        <!--Add the name of the bot here -->
+        <span class="chat_header_title">LeapU</span>
+        <span class="dropdown-trigger" href="#" data-target="dropdown1">
+          <i class="material-icons"> more_vert </i>
+        </span>
+
+        <!-- Dropdown menu-->
+        <ul id="dropdown1" class="dropdown-content">
+          <li><a href="#" id="clear">Clear</a></li>
+          <li><a href="#" id="restart">Restart</a></li>
+          <li><a href="#" id="close">Close</a></li>
+        </ul>
+      </div>
+
+      <!--Chatbot contents goes here -->
+      <div class="chats" id="chats">
+        <div class="clearfix"></div>
+      </div>
+
+      <!--keypad for user to type the message -->
+      <div class="keypad">
+        <textarea id="userInput" placeholder="Type a message..." class="usrInput"></textarea>
+        <div id="sendButton">
+          <i class="fa fa-paper-plane" aria-hidden="true"></i>
         </div>
       </div>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script
-      type="text/javascript"
-      src="static/js/lib/materialize.min.js"
-    ></script>
-    <script src="static/js/lib/uuid.min.js"></script>
-    <!--Main Script -->
-    <script type="text/javascript" src="static/js/script.js"></script>
+    </div>
 
-    <!--Chart.js Script -->
-    <script type="text/javascript" src="static/js/lib/chart.min.js"></script>
-    <script type="text/javascript" src="static/js/lib/showdown.min.js"></script>
-    <!-- CHATBOT END -->
-<script src="https://kit.fontawesome.com/dd58e56ed9.js" crossorigin="anonymous"></script>
-<script src="./main.js"></script>
+    <!--bot profile-->
+    <div class="profile_div" id="profile_div">
+      <img class="imgProfile" src="static/img/botAvatar.png" />
+    </div>
+
+    <!-- Bot pop-up intro -->
+    <div class="tap-target" data-target="profile_div">
+      <div class="tap-target-content">
+        <h5 class="white-text">Hey there 👋</h5>
+        <p class="white-text">
+          I can help you get started with Rasa and answer your technical
+          questions.
+        </p>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="static/js/lib/materialize.min.js"></script>
+  <script src="static/js/lib/uuid.min.js"></script>
+  <!--Main Script -->
+  <script type="text/javascript" src="static/js/script.js"></script>
+
+  <!--Chart.js Script -->
+  <script type="text/javascript" src="static/js/lib/chart.min.js"></script>
+  <script type="text/javascript" src="static/js/lib/showdown.min.js"></script>
+  <!-- CHATBOT END -->
+  <script src="https://kit.fontawesome.com/dd58e56ed9.js" crossorigin="anonymous"></script>
+  <script src="./main.js"></script>
 </body>
-</html> 
+
+</html>

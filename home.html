@@ -25,17 +25,13 @@
             <!-- Navbar Search-->
                 <div class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                  </div>
-            </form>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" onclick="signOut()">Logout</a></li>
-                    </ul>
+                    <a class="nav-link" onclick="signOut()" role="button" aria-expanded="false"><i style="margin-right: 5px;" class="fas fa-arrow-right-from-bracket"></i>Log Out</a>
+                    <!-- <a class="fas fa-arrow-right-from-bracket" onclick="signOut()">Logout</a> -->
+                    <!-- <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    </ul> -->
                 </li>
             </ul>
         </nav>
@@ -226,7 +222,7 @@
                                             </div>
                                         </div>
                                         <div id="buttons-pomodoro">
-                                            <button class="btn btn-primary ml-4" id="work">Work</button>
+                                            <button class="btn btn-primary ml-4" id="work" onclick="stopTimer()">Work</button>
                                             <button class="btn btn-secondary ml-4" id="shortBreak">Short Break</button>
                                             <button class="btn btn-success ml-4" id="longBreak">Long Break</button>
                                             <button class="btn btn-danger ml-4" id="stop">Stop</button>
@@ -256,12 +252,12 @@
                                             <div class="card">
                                               <div class="card-body-todo">
                                                 <div class="d-flex flex-row align-items-center">
-                                                  <form id="todoForm">
+                                                  <form id="todoForm" action="/" method="get">
                                                   <input type="text" style="width: 1030px; margin-bottom: 10px;" id="task" required name="task" class="form-control form-control-lg"
                                                     placeholder="Add new task">
                                                     <div style="display: flex; justify-content: space-between">
                                                   <input type="datetime-local" id="date" style="margin-bottom: 10px;" data-mdb-toggle="tooltip" required name="date" title="Set due date"></input>
-                                                    <button onclick="storeData()" class="btn btn-primary">Add</button>
+                                                    <button onclick="storeData()" type="submit" class="btn btn-primary">Add</button>
                                                   </div>
                                                 </form>
                                                 </div>

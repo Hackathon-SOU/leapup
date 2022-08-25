@@ -33,7 +33,7 @@ function signup(){
     //
     promise.catch(e=>alert(e.message));
     alert("SignUp Successfully");
-    window.location.replace("./home.html");
+    window.location.replace("./AudioBooks/");
   }
   
   //signIN function
