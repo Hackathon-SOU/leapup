@@ -9,10 +9,10 @@
 }
 
 #timer{ 
-  color: #dc3545; 
+  color: #3f6080; 
   font-size:50px; 
-  margin:10px auto;
-  border : 10px solid #dc3545;
+  margin:-27px auto;
+  border : 10px solid #3f6080;
   border-radius:50%;
   width:200px;
   height:200px;

@@ -25,7 +25,7 @@ var pomodoro = {
       document.querySelector('#longBreak').onclick = function(){
         self.startLongBreak.apply(self);
       };
-      document.querySelector('#stop').onclick = function(){
+      document.getElementById("stop").onclick = function(){
         self.stopTimer.apply(self);
       };
     },
@@ -38,16 +38,20 @@ var pomodoro = {
     },
     startWork: function() {
       this.resetVariables(25, 0, true);
+      playAudio();
     },
     startShortBreak : function(){
       this.resetVariables(5, 0, true);
+      stopAudio();
     },
     startLongBreak : function(){
       this.resetVariables(15, 0, true);
+      stopAudio();
     },
     stopTimer : function(){
       this.resetVariables(25, 0, false);
       this.updateDom();
+      stopAudio();
     },
     toDoubleDigit : function(num){
       if(num < 10) {
@@ -80,6 +84,45 @@ var pomodoro = {
       this.fillerHeight = 0;
     }
 };
+
+function hidePomodoro()
+{
+  var pomodoroDisplay = document.getElementById("pomodoro-tech");
+  pomodoroDisplay.style.display = 'none'; 
+  
+  var customTimer = document.getElementById("temp-1");
+  customTimer.style.display = 'block'; 
+
+  var timerSwitch = document.getElementById("timerSwitch");
+  timerSwitch.innerHTML=("Use Pomodoro Timer");
+  timerSwitch.setAttribute('onclick','showPomodoro()');
+
+  var Pbuttons = document.getElementById("buttons-pomodoro");
+  Pbuttons.style.display='none';
+
+  var Cbuttons = document.getElementById("buttons-custom");
+  Cbuttons.style.display='block';
+};
+
+function showPomodoro(){
+  var customTimer = document.getElementById("temp-1");
+  customTimer.style.display = 'none'; 
+  
+  var pomodoroDisplay = document.getElementById("pomodoro-tech");
+  pomodoroDisplay.style.display = 'block'; 
+  
+  var timerSwitch = document.getElementById("timerSwitch");
+  timerSwitch.innerHTML=("Use Custom Timer");
+  timerSwitch.setAttribute('onclick','hidePomodoro()');
+  
+  var Cbuttons = document.getElementById("buttons-custom");
+  Cbuttons.style.display='none';
+
+  var Pbuttons = document.getElementById("buttons-pomodoro");
+  Pbuttons.style.display='block';
+}
+
 window.onload = function(){
   pomodoro.init();
 };
+

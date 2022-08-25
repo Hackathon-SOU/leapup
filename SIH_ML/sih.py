@@ -34,6 +34,6 @@ def index():
         task = request.form['task']
         task = le.fit_transform([task])
         prediction = knn.predict(task)
-        return render_template('index.html', prediction=prediction)
+        return render_template('home.html', prediction=prediction)
     else:
-        return render_template('index.html')
+        return render_template('home.html')

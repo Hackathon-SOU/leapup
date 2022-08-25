@@ -6,6 +6,7 @@ html, body {
   width: 100%;
   position: relative;
   font-family: "Comfortaa", cursive;
+  background-color: #d0cbc7 !important;
 }
 
 #container {
@@ -94,9 +95,9 @@ html, body {
   opacity: 1;
   transform: translatey(0);
 }
-#container.ended #score {
+/* #container.ended #score {
   transform: translatey(6vh) scale(1.5);
-}
+} */
 #container.ended .game-over * {
   opacity: 1;
   transform: translatey(0);

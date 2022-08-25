@@ -11,45 +11,37 @@
         <link href="css/styles.css" rel="stylesheet" />
         <link href="todolist.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="./pomodoro.css">
-
+        <link rel="stylesheet" href="./pomodoro.css">
+        <link rel="stylesheet" href="/timer.css">
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
-    <body class="sb-nav-fixed">
-
+    <body class="sb-nav-fixed" style="background-color:#DADADA">
       
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #162a3e;">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="home.html">LeapUp</a>
             <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button> -->
             <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
+                <div class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                 </div>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
-                    </ul>
+                    <a class="nav-link" onclick="signOut()" role="button" aria-expanded="false"><i style="margin-right: 5px;" class="fas fa-arrow-right-from-bracket"></i>Log Out</a>
+                    <!-- <a class="fas fa-arrow-right-from-bracket" onclick="signOut()">Logout</a> -->
+                    <!-- <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    </ul> -->
                 </li>
             </ul>
         </nav>
-        <div id="layoutSidenav">
+        <!-- <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="home.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Home 
                             </a>
@@ -78,16 +70,12 @@
                               
                           </a>
                         </div>
-                    </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                      LeapUp
-                    </div>
+                    </div> -->
                 </nav>
             </div>
             <div id="layoutSidenav_content">
                 <main> 
-                    <div class="container-fluid px-4">
+                    <div class="container-fluid px-4" style="margin-top: 60px;">
                         <h1 class="mt-4">Leap Up</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Welcome Buddy!</li>
@@ -138,22 +126,54 @@
                                        TIMER
                                     </div>
                                     <div class="card-body">
-
+                                    <div id="pomodoro-tech">
                                         <!-- Timer code begins -->
                                         <div id="pomodoro-app">
                                             <div id="container">
-                                              <div id="timer">
+                                            <div id="timer">
                                                 <div id="time">
                                                   <span id="minutes">25</span>
                                                   <span id="colon">:</span>
                                                   <span id="seconds">00</span>
                                                 </div>
                                                 <div id="filler"></div>
-                                              </div>
-                                          
-                                            
+                                            </div>
                                             </div>
                                           </div>
+                                    </div>
+                                          <div id="temp-1" class="tempon" style="display: none;">
+                                              <div class="text-center">
+                                                <div class="countdown ml-auto mr-auto" id="countdown">
+                                                    <span id="hours">00</span> : <span id="mins">00</span> :  <span id="secs">00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="display: flex; justify-content: center; margin-top: 30px;">
+                                            <h5>
+                                                <button style="border-radius: 7px; border: none; background-color: #3f6080; color: #fff; padding: 10px;" onclick="hidePomodoro()" id="timerSwitch">Use Custom Timer</button>
+                                            </h5>
+                                        </div>
+
+                                          <div id="temp-2" class="tempoff" style="margin-top: 30px; margin: auto;   position: absolute;
+                                          top: 50%;
+                                          left: 50%;
+                                          -ms-transform: translate(-50%, -50%);
+                                          transform: translate(-50%, -50%);">
+                                                <button style="padding: 10px 50px 10px 75px; text-align: center;" onclick="window.location.replace('/podcast.html')">Listen to Podcast</button>
+                                            <br>
+                                                <h5 style="text-align:center; margin-top: 50px;"><u>Games</u></h5>
+                                                <button onclick="window.location.replace('/tower-blocks/dist/towerblock.html')">Tower Block</button>
+                                                <button onclick="window.location.replace('/bullseye-game/dist/bullseye.html')">Bullseye</button>
+                                                <button onclick="window.location.replace('/menja/dist/menja.html')">Menja</button>
+                                            </div>
+                                          
+                                          <!-- Total Break Took:
+                                          <div class="text-center">
+                                            <div class="breaktime ml-auto mr-auto" id="breaktime">
+                                                <span id="hours">00</span> : <span id="mins">00</span> :  <span id="secs">00</span>
+                                            </div>
+                                        </div> -->
+
                                     </div>
                                 </div>
                             </div>
@@ -163,67 +183,88 @@
                                         <i class="fas fa-chart-bar me-1"></i>
                                         Current Tasks
                                     </div>
+                                    <audio id="bineuralBeat">
+                                        <source src="./bineuralBeat/simply-meditation-series-11hz-alpha-binaural-waves-for-relaxed-focus-8028.mp3" type="audio/mpeg">
+                                      </audio>
                                     <div class="card-body">
-                                       <br>
-                                        <h2>
-                                            <b> Title:</b> javascript ch-2
+                                        <h4>
+                                            <b> Title:</b> <span id="takenTask-name"></span>
                                         
-                                        </h2>
+                                        </h4>
                                          <br>
                                          
 
                                         <p>
-                                            <b> Date:</b> 15-July-2022
+                                            <b> Date:</b> <span id="takenTask-date"></span>
                                         
                                         </p>
                                         <p>
-                                            <b> Time:</b> 11 AM- 3 PM
+                                            <b> Time:</b> <span id="takenTask-time"></span>
                                         
                                         </p> <br>
-                                        
-                                        <div id="buttons">
-                                            <button id="work">Work</button>
-                                            <button id="shortBreak">Short Break</button>
-                                            <button id="longBreak">Long Break</button>
-                                            <button id="stop">Stop</button>
-                                          </div>
+                                        <div id="buttons-custom" style="display: none;">
+                                        <div class="button-main">
+                                            Time required to complete
+                                            <form class="button-main" id="timer-form">
+                                            <div>
+                                                <input type="number" min="0" class="form-control ml-2" style="width:110px; margin-left: 50px;" id="minValue" placeholder="Minute">
+                                            </div>
+                                            <div>
+                                                <input type="text" class="form-control ml-2" id="thresholdValue" style="width:110px" placeholder="Threshold">
+                                            </div>
+                                            </form>
+                                        </div>
+                                            <div style="margin-top:10px;">
+                                                <button class="btn btn-primary ml-4" id="start">Start</button>
+                                                <button class="btn btn-secondary ml-4" id="break" onclick="stopTimer()">Break</button>
+                                                <button class="btn btn-success ml-4" id="stop">Task Completed</button>
+                                                <button class="btn btn-danger ml-4" id="reset" onclick="resetTimer()">Reset</button>
+                                            </div>
+                                        </div>
+                                        <div id="buttons-pomodoro">
+                                            <button class="btn btn-primary ml-4" id="work" onclick="stopTimer()">Work</button>
+                                            <button class="btn btn-secondary ml-4" id="shortBreak">Short Break</button>
+                                            <button class="btn btn-success ml-4" id="longBreak">Long Break</button>
+                                            <button class="btn btn-danger ml-4" id="stop">Stop</button>
+                                        </div>
+                                        <button style="border: none; color:#162a3e" onclick="pauseAudio()">
+                                            <i class="fas fa-volume-xmark"></i>
+                                        </button>
+                                        <button style="border: none; color:#162a3e" onclick="playAudio()">
+                                            <i class="fas fa-volume-high"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                               ToDoList Form
+                        </div>                             
                                <section class="vh-100">
                                 <div class="container py-5 h-100">
                                   <div class="row d-flex justify-content-center align-items-flex-start  h-100">
                                     <div class="col">
                                       <div class="card" id="list1" style="border-radius: .75rem; background-color: #808080
                                       f2;">
-                                        <div class="card-body py-4 px-4 px-md-5">
-                                        
-                              
-                                          
+                                        <div class="card-body-todo py-4 px-4 px-md-5">
+                                        <div class="card-header" style="padding-bottom:10px">
+                                            <i class="fas fa-table me-1"></i>
+                                            ToDoList Form
+                                        </div>
                                           <div class="pb-2">
                                             <div class="card">
-                                              <div class="card-body">
+                                              <div class="card-body-todo">
                                                 <div class="d-flex flex-row align-items-center">
-                                                  <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
-                                                    placeholder="Add new...">
-                                                  <a href="#!" data-mdb-toggle="tooltip" title="Set due date"><i
-                                                      class="fas fa-calendar-alt fa-lg me-3"></i></a>
-                                                  <div>
-                                                    <button type="button" class="btn btn-primary">Add</button>
+                                                  <form id="todoForm" action="/" method="post">
+                                                  <input type="text" style="width: 1030px; margin-bottom: 10px;" id="task" required name="task" class="form-control form-control-lg"
+                                                    placeholder="Add new task">
+                                                    <div style="display: flex; justify-content: space-between">
+                                                  <input type="datetime-local" id="date" style="margin-bottom: 10px;" data-mdb-toggle="tooltip" required name="date" title="Set due date"></input>
+                                                    <button onclick="storeData()" type="submit" class="btn btn-primary">Add</button>
                                                   </div>
+                                                </form>
                                                 </div>
                                               </div>
                                             </div>
-                                          </div>
-                              
-                                          <hr class="my-4">
-                              
-                                          <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
+                                          </div>                              
+                                          <div class="d-flex justify-content-end align-items-center mt-4 mb-4 pt-2 pb-3">
                                             <p class="small mb-0 me-2 text-muted">Filter</p>
                                             <select class="select">
                                               <option value="1">All</option>
@@ -242,95 +283,8 @@
                                             ;" data-mdb-toggle="tooltip" title="Ascending"><i
                                                 class="fas fa-sort-amount-down-alt ms-2"></i></a>
                                           </div>
-                              
-                                          <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
-                                            <li
-                                              class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
-                                              <div class="form-check">
-                                                <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked1"
-                                                  aria-label="..." checked />
-                                              </div>
-                                            </li>
-                                            <li
-                                              class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
-                                              <p class="lead fw-normal mb-0">Buy groceries for next week</p>
-                                            </li>
-                                            <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
-                                              <div class="d-flex flex-row justify-content-end mb-1">
-                                                <a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i
-                                                    class="fas fa-pencil-alt me-3"></i></a>
-                                                <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i
-                                                    class="fas fa-trash-alt"></i></a>
-                                              </div>
-                                              <div class="text-end text-muted">
-                                                <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="Created date">
-                                                  <p class="small mb-0"><i class="fas fa-info-circle me-2"></i>28th Jun 2020</p>
-                                                </a>
-                                              </div>
-                                            </li>
-                                          </ul>
-                                          <ul class="list-group list-group-horizontal rounded-0">
-                                            <li
-                                              class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
-                                              <div class="form-check">
-                                                <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked2"
-                                                  aria-label="..." />
-                                              </div>
-                                            </li>
-                                            <li
-                                              class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
-                                              <p class="lead fw-normal mb-0">Renew car insurance</p>
-                                            </li>
-                                            <li class="list-group-item px-3 py-1 d-flex align-items-center border-0 bg-transparent">
-                                              <div
-                                                class="py-2 px-3 me-2 border border-warning rounded-3 d-flex align-items-center bg-light">
-                                                <p class="small mb-0">
-                                                  <a href="#!" data-mdb-toggle="tooltip" title="Due on date">
-                                                    <i class="fas fa-hourglass-half me-2 text-warning"></i>
-                                                  </a>
-                                                  28th Jun 2020
-                                                </p>
-                                              </div>
-                                            </li>
-                                            <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
-                                              <div class="d-flex flex-row justify-content-end mb-1">
-                                                <a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i
-                                                    class="fas fa-pencil-alt me-3"></i></a>
-                                                <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i
-                                                    class="fas fa-trash-alt"></i></a>
-                                              </div>
-                                              <div class="text-end text-muted">
-                                                <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="Created date">
-                                                  <p class="small mb-0"><i class="fas fa-info-circle me-2"></i>28th Jun 2020</p>
-                                                </a>
-                                              </div>
-                                            </li>
-                                          </ul>
-                                          <ul class="list-group list-group-horizontal rounded-0 mb-2">
-                                            <li
-                                              class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
-                                              <div class="form-check">
-                                                <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked3"
-                                                  aria-label="..." />
-                                              </div>
-                                            </li>
-                                            <li
-                                              class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
-                                              <p class="lead fw-normal mb-0 bg-light w-100 ms-n2 ps-2 py-1 rounded">Sign up for online
-                                                course</p>
-                                            </li>
-                                            <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
-                                              <div class="d-flex flex-row justify-content-end mb-1">
-                                                <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i
-                                                    class="fas fa-trash-alt"></i></a>
-                                              </div>
-                                              <div class="text-end text-muted">
-                                                <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="Created date">
-                                                  <p class="small mb-0"><i class="fas fa-info-circle me-2"></i>28th Jun 2020</p>
-                                                </a>
-                                              </div>
-                                            </li>
-                                          </ul>
+                                          
+                                          <ul class="todo-content"></ul>
                               
                                         </div>
                                       </div>
@@ -338,31 +292,24 @@
                                   </div>
                                 </div>
                               </section>
-                            </div>
-                        </div>
+                          
                     </div>
                 </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2022</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+
             </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
-        <script src='https://npmcdn.com/vue@1.0.24/dist/vue.min.js'></script><script  src="./pomodoro.js"></script>
+          </div>
+          <script src="/timer.js"></script> 
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+          <script src="js/scripts.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+          <script src="assets/demo/chart-area-demo.js"></script>
+          <script src="assets/demo/chart-bar-demo.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+          <script src="js/datatables-simple-demo.js"></script>
+          <script src='https://npmcdn.com/vue@1.0.24/dist/vue.min.js'></script><script  src="./pomodoro.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+          <script src="/test.js"></script> 
     </body>
 </html>

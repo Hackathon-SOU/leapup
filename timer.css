@@ -1,0 +1,24 @@
+.countdown {
+    margin: 0 auto;
+    border: 5px solid #3f6080;
+    border-radius: 11px;
+    padding: .5rem;
+    margin-top: 1rem;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .button-main { 
+    display: flex;
+    align-items: center;
+
+  }
+  
+  .countdown span {
+      font-size: 40px;
+      color: #3f6080;
+      font-family: Arial;
+  }
+  .countdown.threshold span {
+      color: red;
+  }
