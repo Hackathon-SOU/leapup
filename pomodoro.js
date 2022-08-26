@@ -42,16 +42,16 @@ var pomodoro = {
     },
     startShortBreak : function(){
       this.resetVariables(5, 0, true);
-      stopAudio();
+      pauseAudio();
     },
     startLongBreak : function(){
       this.resetVariables(15, 0, true);
-      stopAudio();
+      pauseAudio();
     },
     stopTimer : function(){
       this.resetVariables(25, 0, false);
       this.updateDom();
-      stopAudio();
+      pauseAudio();
     },
     toDoubleDigit : function(num){
       if(num < 10) {
@@ -85,41 +85,41 @@ var pomodoro = {
     }
 };
 
-function hidePomodoro()
+function showPomodoro()
 {
   var pomodoroDisplay = document.getElementById("pomodoro-tech");
-  pomodoroDisplay.style.display = 'none'; 
+  pomodoroDisplay.style.display = 'block'; 
   
-  var customTimer = document.getElementById("temp-1");
-  customTimer.style.display = 'block'; 
-
-  var timerSwitch = document.getElementById("timerSwitch");
-  timerSwitch.innerHTML=("Use Pomodoro Timer");
-  timerSwitch.setAttribute('onclick','showPomodoro()');
-
-  var Pbuttons = document.getElementById("buttons-pomodoro");
-  Pbuttons.style.display='none';
-
-  var Cbuttons = document.getElementById("buttons-custom");
-  Cbuttons.style.display='block';
-};
-
-function showPomodoro(){
   var customTimer = document.getElementById("temp-1");
   customTimer.style.display = 'none'; 
+
+  var timerSwitch = document.getElementById("timerSwitch");
+  timerSwitch.innerHTML=("Use Custom Timer");
+  timerSwitch.setAttribute('onclick','hidePomodoro()');
+
+  var Pbuttons = document.getElementById("buttons-pomodoro");
+  Pbuttons.style.display='block';
+
+  var Cbuttons = document.getElementById("buttons-custom");
+  Cbuttons.style.display='none';
+};
+
+function hidePomodoro(){
+  var customTimer = document.getElementById("pomodoro-tech");
+  customTimer.style.display = 'none'; 
   
-  var pomodoroDisplay = document.getElementById("pomodoro-tech");
+  var pomodoroDisplay = document.getElementById("temp-1");
   pomodoroDisplay.style.display = 'block'; 
   
   var timerSwitch = document.getElementById("timerSwitch");
   timerSwitch.innerHTML=("Use Custom Timer");
-  timerSwitch.setAttribute('onclick','hidePomodoro()');
+  timerSwitch.setAttribute('onclick','showPomodoro()');
   
   var Cbuttons = document.getElementById("buttons-custom");
-  Cbuttons.style.display='none';
+  Cbuttons.style.display='block';
 
   var Pbuttons = document.getElementById("buttons-pomodoro");
-  Pbuttons.style.display='block';
+  Pbuttons.style.display='none';
 }
 
 window.onload = function(){

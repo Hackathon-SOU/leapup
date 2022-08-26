@@ -89,6 +89,18 @@ function stop() {
   window.speechSynthesis.cancel();
 };
 
+document.querySelector("#volume").addEventListener("input", () => {
+  
+  // Get volume Value from the input
+  const volume = document.querySelector("#volume").value;
+
+  // Set volume property of the SpeechSynthesisUtterance instance
+  msg.volume = volume;
+
+  // Update the volume label
+  document.querySelector("#volume-label").innerHTML = volume;
+});
+
 function navigate(){
   window.location.replace("../home.html")
 }

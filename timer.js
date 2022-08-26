@@ -45,17 +45,29 @@ startBtn.onclick = function(e) {
     }
 }
 
-
 function pauseAudio(){
     var audio = document.getElementById("bineuralBeat");
     audio.pause();
 };
+
+document.querySelector("#volume").addEventListener("input", () => {
+    var audio = document.getElementById("bineuralBeat");
+    // Get volume Value from the input
+    const volume = document.querySelector("#volume").value;
+  
+    // Set volume property of the SpeechSynthesisUtterance instance
+    audio.volume = volume;
+  
+    // Update the volume label
+    document.querySelector("#volume-label").innerHTML = volume;
+  });
 
 function playAudio(){
      var audio = document.getElementById("bineuralBeat");
     if (confirm("Please make sure you've pluged in your Headset!") == true) {
         // playing audio
         audio.play();
+        document.getElementById("sound").style.display = "block";
     } else {
         if (confirm("Continue without headset?") == true) {
             // playing audio
@@ -72,6 +84,7 @@ function stopTimer() {
     timerFn = null;
     pauseAudio();
     showButton();
+    document.getElementById("timerSwitch").style.display = "none";
     return 0;
 }
 

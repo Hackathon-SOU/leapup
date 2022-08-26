@@ -14,12 +14,15 @@ var firebaseConfig = {
     firebase.auth().onAuthStateChanged((user)=>{
       if(user){
         var email = user.email;
-        alert("Loged in as "+email);
+        // alert("Loged in as "+email);
+        document.getElementById('user-email').innerHTML = email;
+        // console.log(user.uid);
       }else{
         alert("Please login First");  
         window.location.replace("../index.html");
       }
     })
+
     
     function signOut(){
       auth.signOut();
@@ -46,7 +49,7 @@ var firebaseConfig = {
      
      function deleteTask(id){
        content.innerHTML="";
-      console.log(id);
+      // console.log(id);
        db.collection("todolist").doc(id).delete().then(() => {
         console.log("Document successfully deleted!");
         // alert("Task Deleted Successfully");
@@ -86,10 +89,16 @@ var firebaseConfig = {
 
     // console.log(takenTask);
 
+// var apiTask = "";
+
 function storeData(e) {
   var task = document.getElementById("task").value;
   var date = document.getElementById("date").value;
+  apiCall(task);
+  var SuggestedTime = apiCall(task);
   // console.log(new Date(date));
+
+  console.log(SuggestedTime,"This is time");
   
   // console.log(taskid);
   db.collection("todolist").doc().set({
@@ -106,13 +115,60 @@ function storeData(e) {
       });
       content.innerHTML="";
   };
+
+  // var SuggestedTime = apiCall(apiTask)
+
+  // console.log(apiTask);
+  var ml_min = document.getElementById("ml-min");
+  var ml_sec = document.getElementById("ml-sec");
   
+  console.log(ml_result, "from ml result");
+
+async  function apiCall(apiTask){
+    console.log(apiTask);
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    const data= fetch(`http://127.0.0.1:5000/?task=${apiTask}`, requestOptions)
+      .then(response => response.json())
+      .then((result) =>
+      {
+        console.log(result.time);
+        return result.time;
+        // return result.time
+      })
+      .catch(error => console.log('error', error));
+      // console.log(res);
+      return data;
+  }
+
+
+
+  
+  async function getPoints()
+  {
+    var points = 0;
+    await db.collection("todolist").where("status", "==", "completed").get().then((querySnapshot) => {          
+      querySnapshot.forEach((doc) => {
+        console.info(doc.data())
+        // let item=doc.data();
+        points = points+10;
+        return points;
+      })
+    })
+  }
+  console.log(getPoints());
+    
+var result = getPoints()
+console.log(result);
+
 var totaltask=[];
 function getTask()
 {
       db.collection("todolist").orderBy("key").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                console.log(doc.data())
+                // console.log(doc.data())
                 let item=doc.data();
                 // console.log(item.date.seconds);
                 var seconds = item.date.seconds * 1000;
@@ -125,7 +181,7 @@ function getTask()
   var min = dateObj.getMinutes();
   
   var dateString =`${day}/${month}/${year} - ${hour}:${min}`;
-  console.log(dateString);
+  // console.log(dateString);
   var taskHtml= `<ul data-id="${doc.id}" style="border-bottom: 0.5px solid #7878785f; " class="list-group list-group-horizontal rounded-0 bg-transparent">
   <li
   class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
@@ -155,12 +211,14 @@ function getTask()
     if(taskid!=querySnapshot.size || taskid==0){
       console.info("true");
       taskid = taskid + 1;
-      console.log(taskid);
+      // console.log(taskid);
     }
   })
   
 })
 }
+
+
 
 
 
