@@ -121,8 +121,9 @@ function storeData(e) {
   // console.log(apiTask);
   var ml_min = document.getElementById("ml-min");
   var ml_sec = document.getElementById("ml-sec");
-  
-  console.log(ml_result, "from ml result");
+  const FinalResult = "";
+
+  // console.log(ml_result, "from ml result");
 
 async  function apiCall(apiTask){
     console.log(apiTask);
@@ -134,15 +135,15 @@ async  function apiCall(apiTask){
       .then(response => response.json())
       .then((result) =>
       {
+        FinalResult = JSON.parse(result.time);
         console.log(result.time);
-        return result.time;
         // return result.time
       })
       .catch(error => console.log('error', error));
       // console.log(res);
-      return data;
-  }
-
+    }
+    
+    // console.log(FinalResult, "the final result");
 
 
   

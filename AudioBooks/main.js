@@ -20,11 +20,13 @@ var firebaseConfig = {
         }
       })
 
+      
          
       let slideIndex = 1;
       var content = "";
       var chatbox = document.getElementById("chatbox");
       
+      var finish = document.getElementById("finish");
       
       showSlides(slideIndex);
       
@@ -39,7 +41,9 @@ var firebaseConfig = {
       function showSlides(n) {
           // for displaying button
           if (n>=4) {
-            chatbox.style.display = 'block';   
+            chatbox.style.display = 'block';  
+            finish.style.display = 'block' 
+
 
               // Create new link Element
               var link = document.createElement('link');       
