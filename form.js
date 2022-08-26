@@ -42,7 +42,7 @@ function signup(){
     var password = document.getElementById("signin-password").value;
     const promise = auth.signInWithEmailAndPassword(email,password);
     promise.catch(e=>alert(e.message));
-    window.location.replace("./AudioBooks/");
+    window.location.replace("./home.html");
   };
 
   // active user to homepage
@@ -50,7 +50,7 @@ function signup(){
     if(user){
       var email = user.email;
       alert("Active user "+email);
-      window.location.replace("./AudioBooks/");
+      window.location.replace("./home.html");
 
     }else{
       alert("No Active user Found")
